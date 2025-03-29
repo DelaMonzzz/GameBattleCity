@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1743166861 source:c:\users\admin\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\game\main.cpp
+	<iostream>
+	<SDL.h>
+
