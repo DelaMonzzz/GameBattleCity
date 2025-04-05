@@ -287,10 +287,10 @@ public:
                 running = false; // Nếu sự kiện là đóng cửa sổ, kết thúc trò chơi
             } else if (event.type == SDL_KEYDOWN) {
                 switch (event.key.keysym.sym) {  // Kiểm tra phím bấm
-                    case SDLK_UP: player.move(0, -5, walls); break; // Di chuyển lên
-                    case SDLK_DOWN: player.move(0, 5, walls); break; // Di chuyển xuống
-                    case SDLK_LEFT: player.move(-5, 0, walls); break; // Di chuyển trái
-                    case SDLK_RIGHT: player.move(5, 0, walls); break; // Di chuyển phải
+                    case SDLK_w: player.move(0, -5, walls); break; // Di chuyển lên
+                    case SDLK_s: player.move(0, 5, walls); break; // Di chuyển xuống
+                    case SDLK_a: player.move(-5, 0, walls); break; // Di chuyển trái
+                    case SDLK_d: player.move(5, 0, walls); break; // Di chuyển phải
                     case SDLK_SPACE: player.shoot(); break; // Bắn đạn
                 }
             }
