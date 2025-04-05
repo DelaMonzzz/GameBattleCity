@@ -249,7 +249,7 @@ public:
     bool running;           // Trạng thái của trò chơi (chạy hay dừng)
     vector<Wall> walls;     // Danh sách các bức tường
     PlayerTank player;      // Người chơi
-    int enemyNumber = 3;    // Số lượng xe tăng đối thủ
+    int enemyNumber = 5;    // Số lượng xe tăng đối thủ
     vector<EnemyTank> enemies; // Danh sách các xe tăng đối thủ
 
     // Hàm tạo ra các bức tường trong bản đồ
