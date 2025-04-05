@@ -120,7 +120,11 @@ public:
 
     // Hàm bắn đạn
     void shoot() {
-        bullets.push_back(Bullet(x + TILE_SIZE / 2 - 5, y + TILE_SIZE / 2 - 5, this->dirX, this->dirY));
+        if (bullets.size() >= 3) { // Nếu số lượng đạn hiện tại đã đạt giới hạn 3 viên, không bắn thêm
+        return;
+    }
+    // Nếu chưa đạt giới hạn, tạo một viên đạn mới
+    bullets.push_back(Bullet(x + TILE_SIZE / 2 - 5, y + TILE_SIZE / 2 - 5, this->dirX, this->dirY));
     }
 
     // Cập nhật trạng thái các viên đạn của người chơi
@@ -152,8 +156,8 @@ public:
     vector<Bullet> bullets;  // Danh sách viên đạn của xe tăng đối thủ
 
     EnemyTank() {
-        moveDelay = 15;  // Thời gian trì hoãn giữa các lần di chuyển
-        shootDelay = 5;  // Thời gian trì hoãn giữa các lần bắn
+        moveDelay = 5;  // Thời gian trì hoãn giữa các lần di chuyển
+        shootDelay = 2;  // Thời gian trì hoãn giữa các lần bắn
         x = 0;
         y = 0;
         rect = {x, y, TILE_SIZE, TILE_SIZE}; // Kích thước xe tăng
@@ -163,8 +167,8 @@ public:
     }
 
     EnemyTank(int startX, int startY) {  // Constructor cho phép tạo xe tăng đối thủ tại vị trí tùy ý
-        moveDelay = 15;
-        shootDelay = 5;
+        moveDelay = 5;
+        shootDelay = 2;
         x = startX;
         y = startY;
         rect = {x, y, TILE_SIZE, TILE_SIZE}; // Kích thước xe tăng
@@ -176,7 +180,7 @@ public:
     // Hàm di chuyển xe tăng đối thủ
     void move(const vector<Wall>& walls) {
         if (--moveDelay > 0) return; // Nếu thời gian trì hoãn chưa hết, không di chuyển
-        moveDelay = 15; // Cập nhật thời gian trì hoãn
+        moveDelay = 5; // Cập nhật thời gian trì hoãn
         int r = rand() % 4;  // Chọn một hướng ngẫu nhiên (lên, xuống, trái, phải)
         if (r == 0) { // Di chuyển lên
             this->dirX = 0;
@@ -214,7 +218,7 @@ public:
     // Hàm bắn đạn của xe tăng đối thủ
     void shoot() {
         if (--shootDelay > 0) return; // Nếu thời gian trì hoãn chưa hết, không bắn
-        shootDelay = 5;  // Cập nhật thời gian trì hoãn giữa các lần bắn
+        shootDelay = 2;  // Cập nhật thời gian trì hoãn giữa các lần bắn
         bullets.push_back(Bullet(x + TILE_SIZE / 2 - 5, y + TILE_SIZE / 2 - 5, this->dirX, this->dirY)); // Bắn đạn vào vị trí chính giữa xe tăng
     }
 
